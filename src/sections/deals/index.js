@@ -33,15 +33,50 @@ const dealProducts = [
 
 /* ---------------- BEST SELLER DATA ---------------- */
 const products = [
-  { name: "Headphone", price: 94, image: "/Gfo-Fireball.png", category: "Electronics" },
-  { name: "Sony Phone", price: 79, image: "/Gfo-Fireball.png", category: "Electronics" },
-  { name: "Smart Watch", price: 57, image: "/Gfo-Fireball.png", category: "Electronics" },
-  { name: "Belt Combo", price: 100, image: "/banner.webp", category: "Accessories" },
-  { name: "Backpack", price: 69, image: "/Gfo-Fireball.png", category: "Accessories" },
+  {
+    name: "Headphone",
+    price: 94,
+    image: "/Gfo-Fireball.png",
+    category: "Electronics",
+  },
+  {
+    name: "Sony Phone",
+    price: 79,
+    image: "/Gfo-Fireball.png",
+    category: "Electronics",
+  },
+  {
+    name: "Smart Watch",
+    price: 57,
+    image: "/Gfo-Fireball.png",
+    category: "Electronics",
+  },
+  {
+    name: "Belt Combo",
+    price: 100,
+    image: "/banner.webp",
+    category: "Accessories",
+  },
+  {
+    name: "Backpack",
+    price: 69,
+    image: "/Gfo-Fireball.png",
+    category: "Accessories",
+  },
   { name: "Top Wear", price: 58, image: "/logo.webp", category: "Fashion" },
-  { name: "Jacket", price: 145, image: "/Gfo-Fireball.png", category: "Fashion" },
+  {
+    name: "Jacket",
+    price: 145,
+    image: "/Gfo-Fireball.png",
+    category: "Fashion",
+  },
   { name: "Top Wear", price: 58, image: "/logo.webp", category: "Fashion" },
-  { name: "Jacket", price: 145, image: "/Gfo-Fireball.png", category: "Fashion" },
+  {
+    name: "Jacket",
+    price: 145,
+    image: "/Gfo-Fireball.png",
+    category: "Fashion",
+  },
 ];
 
 export default function DealsOfWeek() {
@@ -53,8 +88,7 @@ export default function DealsOfWeek() {
   const deal = dealProducts[dealIndex];
   const prevDeal = () =>
     setDealIndex(dealIndex === 0 ? dealProducts.length - 1 : dealIndex - 1);
-  const nextDeal = () =>
-    setDealIndex((dealIndex + 1) % dealProducts.length);
+  const nextDeal = () => setDealIndex((dealIndex + 1) % dealProducts.length);
 
   /* FILTER PRODUCTS */
   const filteredProducts =
@@ -76,9 +110,11 @@ export default function DealsOfWeek() {
   return (
     <section className="deals-section">
       <div className="container deals-wrapper">
-
         {/* ================= LEFT : DEALS OF THE WEEK ================= */}
-        <div className="deals-left">
+        <div
+          className="deals-left"
+          style={{ border: "1px solid var(--emarket-border)", padding: "24px" }}
+        >
           <div className="section-head">
             <h3>DEALS OF THE WEEK</h3>
             <div className="arrows">
@@ -100,10 +136,22 @@ export default function DealsOfWeek() {
             </div>
 
             <div className="timer">
-              <div><strong>19</strong><small>DAYS</small></div>
-              <div><strong>12</strong><small>HRS</small></div>
-              <div><strong>02</strong><small>MINS</small></div>
-              <div><strong>27</strong><small>SECS</small></div>
+              <div>
+                <strong>19</strong>
+                <small>DAYS</small>
+              </div>
+              <div>
+                <strong>12</strong>
+                <small>HRS</small>
+              </div>
+              <div>
+                <strong>02</strong>
+                <small>MINS</small>
+              </div>
+              <div>
+                <strong>27</strong>
+                <small>SECS</small>
+              </div>
             </div>
           </div>
         </div>
@@ -150,7 +198,6 @@ export default function DealsOfWeek() {
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );

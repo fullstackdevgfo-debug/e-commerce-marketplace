@@ -3,8 +3,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 40px 0;
-  border-bottom: 1px solid #eee;
+  padding: 24px 0;
+  border: 1px solid #eee;
   flex-wrap: wrap;
   gap: 20px;
 }
@@ -16,6 +16,11 @@
   gap: 15px;
   flex: 1;
   min-width: 200px;
+  border-right: 1px solid #eee;
+}
+
+.emarket-policy-item:last-child {
+  border-right: none;
 }
 
 .emarket-policy-icon {
@@ -49,7 +54,7 @@
 
 @media (max-width: 768px) {
   .emarket-policy {
-    padding: 30px 15px;
+    padding: 15px 15px;
     justify-content: center;
   }
 
@@ -63,5 +68,11 @@
     min-width: 100%;
     justify-content: flex-start;
     padding-left: 20px;
+    border-right: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  .emarket-policy-item:last-child {
+    border-bottom: none;
   }
 }
