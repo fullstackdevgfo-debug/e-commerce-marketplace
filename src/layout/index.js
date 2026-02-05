@@ -7,6 +7,7 @@ import "@/styles/features.css";
 import "@/styles/blogSection.css";
 import "@/styles/brandSection.css";
 import "@/styles/featureProduct.css";
+import "@/styles/categories.css";
 
 export const Layout = ({ children }) => {
   return (
