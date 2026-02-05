@@ -1,0 +1,129 @@
+.emarket-product-card {
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+.emarket-product-image {
+  position: relative;
+  background-color: #f5f5f5;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emarket-product-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.5s ease;
+}
+
+.emarket-product-card:hover .emarket-product-image img {
+  transform: scale(1.05);
+}
+
+.emarket-product-label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #eb3e32;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 2px;
+  z-index: 10;
+}
+
+.emarket-product-actions {
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 8px 0;
+  transition: bottom 0.3s ease;
+}
+
+.emarket-product-card:hover .emarket-product-actions {
+  bottom: 0;
+}
+
+.emarket-product-action-btn {
+  width: 32px;
+  height: 32px;
+  background-color: #fff;
+  border: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #666;
+}
+
+.emarket-product-action-btn:hover {
+  background-color: var(--primary-color, #ff9800);
+  border-color: var(--primary-color, #ff9800);
+  color: #fff;
+}
+
+.emarket-product-content {
+  text-align: left;
+}
+
+.emarket-product-title {
+  display: block;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 6px;
+  text-decoration: none;
+  transition: color 0.3s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.emarket-product-title:hover {
+  color: var(--primary-color, #ff9800);
+}
+
+.emarket-product-rating {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 8px;
+}
+
+.emarket-product-rating .text-emarket-gray {
+  color: #ccc;
+}
+
+.emarket-product-rating .text-emarket-yellow {
+  color: #ffb400;
+}
+
+.emarket-product-price {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.emarket-price-new {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #222;
+}
+
+.emarket-price-old {
+  font-size: 0.875rem;
+  color: #999;
+  text-decoration: line-through;
+}

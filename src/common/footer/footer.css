@@ -1,0 +1,135 @@
+.emarket-footer {
+  background-color: #222529;
+  padding-top: 48px;
+  padding-bottom: 24px;
+  color: #fff;
+}
+
+.emarket-footer-newsletter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 32px;
+}
+
+.newsletter-info h4 {
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.newsletter-info p {
+  color: #888;
+}
+
+.emarket-newsletter {
+  display: flex;
+  width: 450px;
+}
+
+.emarket-newsletter input {
+  flex: 1;
+  background-color: #33373d;
+  border: 1px solid #444;
+  padding: 10px 15px;
+  color: #fff;
+  outline: none;
+}
+
+.emarket-newsletter button {
+  background-color: var(--primary-color, #ff9800);
+  color: #fff;
+  border: none;
+  padding: 10px 25px;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.emarket-newsletter button:hover {
+  background-color: var(--primary-dark, #f57c00);
+}
+
+.emarket-footer-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+.emarket-footer-title {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.emarket-footer-text {
+  font-size: 0.875rem;
+  color: #888;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.emarket-social-links {
+  display: flex;
+  gap: 12px;
+}
+
+.emarket-social-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  transition: all 0.3s;
+}
+
+.emarket-social-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.emarket-social-icon:hover {
+  background-color: var(--primary-color, #ff9800);
+}
+
+.emarket-footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.emarket-footer ul li {
+  margin-bottom: 8px;
+}
+
+.emarket-footer-link {
+  font-size: 0.875rem;
+  color: #888;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.emarket-footer-link:hover {
+  color: #fff;
+}
+
+.emarket-footer-copyright {
+  text-align: center;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.emarket-footer-copyright p {
+  font-size: 0.875rem;
+  color: #888;
+}

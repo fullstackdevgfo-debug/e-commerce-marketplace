@@ -1,0 +1,64 @@
+.emarket-featured-products {
+  padding: 48px 0;
+}
+
+.emarket-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.emarket-tabs {
+  display: flex;
+  gap: 30px;
+}
+
+.emarket-tab {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #888;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.emarket-tab.active {
+  color: var(--primary-color, #ff9800);
+}
+
+.emarket-tab:hover {
+  color: var(--primary-color, #ff9800);
+}
+
+.emarket-section-nav {
+  display: flex;
+  gap: 8px;
+}
+
+.emarket-carousel-nav {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #f5f5f5;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #222;
+}
+
+.emarket-carousel-nav:hover {
+  background-color: var(--primary-color, #ff9800);
+  color: #fff;
+}
+
+.emarket-product-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+}
