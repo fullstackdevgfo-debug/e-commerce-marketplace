@@ -105,6 +105,15 @@
   left: 20px;
 }
 
+.hero-card {
+  transition: background-image 0.4s ease-in-out;
+}
+
+.arrow {
+  font-size: 22px;
+  font-weight: bold;
+}
+
 /* RESPONSIVE */
 @media (max-width: 1024px) {
   .hero-grid {

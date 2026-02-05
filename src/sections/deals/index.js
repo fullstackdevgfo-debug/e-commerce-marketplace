@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import "../../styles/deals.css";
+import { ProductCard } from "@/components";
 
 /* ---------------- DEAL SLIDER DATA ---------------- */
 const dealProducts = [
@@ -32,36 +33,45 @@ const dealProducts = [
 
 /* ---------------- BEST SELLER DATA ---------------- */
 const products = [
-  { name: "Headphone", price: 94, img: "/Gfo-Fireball.png", category: "Electronics" },
-  { name: "Sony Phone", price: 79, img: "/Gfo-Fireball.png", category: "Electronics" },
-  { name: "Smart Watch", price: 57, img: "/Gfo-Fireball.png", category: "Electronics" },
-
-  { name: "Belt Combo", price: 100, img: "/banner.webp", category: "Accessories" },
-  { name: "Backpack", price: 69, img: "/Gfo-Fireball.png", category: "Accessories" },
-
-  { name: "Top Wear", price: 58, img: "/logo.webp", category: "Fashion" },
-  { name: "Jacket", price: 145, img: "/Gfo-Fireball.png", category: "Fashion" },
+  { name: "Headphone", price: 94, image: "/Gfo-Fireball.png", category: "Electronics" },
+  { name: "Sony Phone", price: 79, image: "/Gfo-Fireball.png", category: "Electronics" },
+  { name: "Smart Watch", price: 57, image: "/Gfo-Fireball.png", category: "Electronics" },
+  { name: "Belt Combo", price: 100, image: "/banner.webp", category: "Accessories" },
+  { name: "Backpack", price: 69, image: "/Gfo-Fireball.png", category: "Accessories" },
+  { name: "Top Wear", price: 58, image: "/logo.webp", category: "Fashion" },
+  { name: "Jacket", price: 145, image: "/Gfo-Fireball.png", category: "Fashion" },
+  { name: "Top Wear", price: 58, image: "/logo.webp", category: "Fashion" },
+  { name: "Jacket", price: 145, image: "/Gfo-Fireball.png", category: "Fashion" },
 ];
 
 export default function DealsOfWeek() {
-  /* ---------------- STATES ---------------- */
   const [dealIndex, setDealIndex] = useState(0);
   const [activeTab, setActiveTab] = useState("All");
+  const [slideIndex, setSlideIndex] = useState(0);
 
-  /* ---------------- DEAL SLIDER ---------------- */
+  /* DEAL SLIDER */
+  const deal = dealProducts[dealIndex];
   const prevDeal = () =>
     setDealIndex(dealIndex === 0 ? dealProducts.length - 1 : dealIndex - 1);
-
   const nextDeal = () =>
     setDealIndex((dealIndex + 1) % dealProducts.length);
 
-  const deal = dealProducts[dealIndex];
-
-  /* ---------------- FILTER PRODUCTS ---------------- */
+  /* FILTER PRODUCTS */
   const filteredProducts =
     activeTab === "All"
       ? products
       : products.filter((p) => p.category === activeTab);
+
+  /* GROUP INTO SLIDES OF 8 */
+  const slides = [];
+  for (let i = 0; i < filteredProducts.length; i += 8) {
+    slides.push(filteredProducts.slice(i, i + 8));
+  }
+
+  const prevSlide = () =>
+    setSlideIndex(slideIndex === 0 ? slides.length - 1 : slideIndex - 1);
+  const nextSlide = () =>
+    setSlideIndex(slideIndex === slides.length - 1 ? 0 : slideIndex + 1);
 
   return (
     <section className="deals-section">
@@ -79,11 +89,8 @@ export default function DealsOfWeek() {
 
           <div className="deal-card">
             <span className="discount">{deal.discount}</span>
-
             <img src={deal.img} alt={deal.name} />
-
             <h4>{deal.name}</h4>
-
             <p className="price">
               ${deal.price}.00 <span>${deal.oldPrice}.00</span>
             </p>
@@ -93,22 +100,10 @@ export default function DealsOfWeek() {
             </div>
 
             <div className="timer">
-              <div>
-                <strong>19</strong>
-                <small>DAYS</small>
-              </div>
-              <div>
-                <strong>12</strong>
-                <small>HRS</small>
-              </div>
-              <div>
-                <strong>02</strong>
-                <small>MINS</small>
-              </div>
-              <div>
-                <strong>27</strong>
-                <small>SECS</small>
-              </div>
+              <div><strong>19</strong><small>DAYS</small></div>
+              <div><strong>12</strong><small>HRS</small></div>
+              <div><strong>02</strong><small>MINS</small></div>
+              <div><strong>27</strong><small>SECS</small></div>
             </div>
           </div>
         </div>
@@ -118,43 +113,44 @@ export default function DealsOfWeek() {
           <div className="section-head">
             <h3>BEST SELLER</h3>
 
-            {/* Desktop Tabs */}
             <ul className="tabs desktop-tabs">
               {["All", "Accessories", "Electronics", "Fashion"].map((tab) => (
                 <li
                   key={tab}
                   className={activeTab === tab ? "active" : ""}
-                  onClick={() => setActiveTab(tab)}
+                  onClick={() => {
+                    setActiveTab(tab);
+                    setSlideIndex(0);
+                  }}
                 >
                   {tab === "All" ? "All Product" : tab}
                 </li>
               ))}
             </ul>
 
-            {/* Mobile Dropdown */}
-            <div className="mobile-tabs">
-              <select
-                value={activeTab}
-                onChange={(e) => setActiveTab(e.target.value)}
-              >
-                <option value="All">All Product</option>
-                <option value="Accessories">Accessories</option>
-                <option value="Electronics">Electronics</option>
-                <option value="Fashion">Fashion</option>
-              </select>
+            <div className="arrows">
+              <span onClick={prevSlide}>‹</span>
+              <span onClick={nextSlide}>›</span>
             </div>
           </div>
 
-          <div className="products-grid">
-            {filteredProducts.map((item, i) => (
-              <div className="product-card" key={i}>
-                <img src={item.img} alt={item.name} />
-                <h5>{item.name}</h5>
-                <p className="price">${item.price}</p>
-              </div>
-            ))}
+          {/* PRODUCT CAROUSEL */}
+          <div className="products-carousel">
+            <div
+              className="products-track"
+              style={{ transform: `translateX(-${slideIndex * 100}%)` }}
+            >
+              {slides.map((group, i) => (
+                <div className="products-slide" key={i}>
+                  {group.map((item, idx) => (
+                    <ProductCard key={idx} {...item} />
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
+
       </div>
     </section>
   );
