@@ -9,7 +9,7 @@ export const Features = () => {
             </div>
             <div className="feature-content">
               <h3 className="feature-title">FREE DELIVERY</h3>
-              <p className="feature-text">From $59.89</p>
+              <p className="feature-text">From ₹1559.89</p>
             </div>
           </div>
 
