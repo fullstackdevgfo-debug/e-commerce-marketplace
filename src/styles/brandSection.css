@@ -60,3 +60,31 @@
   filter: grayscale(0%);
   opacity: 1;
 }
+@media (max-width: 1024px) {
+  .emarket-brand-list {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .emarket-brand-item {
+    flex: 0 0 calc(33.33% - 20px);
+  }
+}
+
+@media (max-width: 768px) {
+  .emarket-brand-section {
+    padding: 30px 15px;
+  }
+
+  .emarket-brand-container {
+    gap: 15px;
+  }
+
+  .emarket-brand-carousel-nav {
+    display: none;
+  }
+
+  .emarket-brand-item {
+    flex: 0 0 calc(50% - 20px);
+  }
+}
