@@ -53,9 +53,9 @@ export const ProductCard = ({
           ))}
         </div>
         <div className="emarket-product-price">
-          <span className="emarket-price-new">${price.toFixed(2)}</span>
+          <span className="emarket-price-new">₹ {price.toFixed(2)}</span>
           {oldPrice && (
-            <span className="emarket-price-old">${oldPrice.toFixed(2)}</span>
+            <span className="emarket-price-old">₹ {oldPrice.toFixed(2)}</span>
           )}
         </div>
       </div>

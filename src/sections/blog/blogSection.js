@@ -9,28 +9,28 @@ const blogs = [
   {
     title: "Duis Autem Vel Eum Tempor Invidunt Ut Labore Et",
     image:
-      "https://opencart4.magentech.com/themes/so_emarket/layout2/image/cache/catalog/blog/7-390x270.jpg",
+      "https://gfofireequipments.com/wp-content/uploads/2025/02/banner_fire_8.webp",
     date: { day: "14", month: "February" },
     comments: 0,
   },
   {
     title: "Enim Ad Minim Veniam Justo Duo Dolores Et Ea",
     image:
-      "https://opencart4.magentech.com/themes/so_emarket/layout2/image/cache/catalog/blog/7-390x270.jpg",
+      "https://gfofireequipments.com/wp-content/uploads/2025/02/banner_fire_8.webp",
     date: { day: "14", month: "February" },
     comments: 0,
   },
   {
     title: "Duis Autem Vel Eum Irure Sed Diam Nonumy",
     image:
-      "https://opencart4.magentech.com/themes/so_emarket/layout2/image/cache/catalog/blog/7-390x270.jpg",
+      "https://gfofireequipments.com/wp-content/uploads/2025/02/banner_fire_8.webp",
     date: { day: "14", month: "February" },
     comments: 0,
   },
   {
     title: "Lorem Ipsum Dolor Sit Amet",
     image:
-      "https://opencart4.magentech.com/themes/so_emarket/layout2/image/cache/catalog/blog/7-390x270.jpg",
+      "https://gfofireequipments.com/wp-content/uploads/2025/02/banner_fire_8.webp",
     date: { day: "13", month: "February" },
     comments: 0,
   },
