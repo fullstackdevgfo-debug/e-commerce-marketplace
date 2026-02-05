@@ -7,53 +7,53 @@ const tabs = ["Best sellers", "New Arrivals", "Most Rating"];
 
 const products = [
   {
-    name: "Benderloin officia",
+    name: "GFO Fireball",
     image:
-      "https://opencart4.magentech.com/themes/so_emarket/layout2/image/cache/catalog/demo/product/index2/1-300x300.jpg",
-    price: 77,
-    oldPrice: 82,
+      "https://gfofireequipments.com/wp-content/uploads/2025/11/Fireball.jpg",
+    price: 3199,
+    oldPrice: 4000,
     discount: 6,
     rating: 0,
   },
   {
-    name: "Bresaola tongued",
+    name: "GFO Fireball",
     image:
-      "https://opencart4.magentech.com/themes/so_emarket/layout2/image/cache/catalog/demo/product/id-update/Electronics/1-300x300.jpg",
-    price: 74,
-    oldPrice: 80,
+      "https://gfofireequipments.com/wp-content/uploads/2025/11/Fireball.jpg",
+    price: 3199,
+    oldPrice: 4000,
     discount: 8,
     rating: 0,
   },
   {
-    name: "Beef ribs prosciutto",
+    name: "GFO Fireball",
     image:
-      "https://opencart4.magentech.com/themes/so_emarket/layout2/image/cache/catalog/demo/product/index2/3-300x300.jpg",
-    price: 80,
-    oldPrice: 89,
+      "https://gfofireequipments.com/wp-content/uploads/2025/11/Fireball.jpg",
+    price: 3199,
+    oldPrice: 4000,
     discount: 10,
     rating: 0,
   },
   {
-    name: "Ball tip prosciutto",
+    name: "GFO Fireball",
     image:
-      "https://opencart4.magentech.com/themes/so_emarket/layout2/image/cache/catalog/demo/product/index2/4-300x300.jpg",
-    price: 68,
-    oldPrice: 76,
+      "https://gfofireequipments.com/wp-content/uploads/2025/11/Fireball.jpg",
+    price: 3199,
+    oldPrice: 4000,
     discount: 11,
     rating: 0,
   },
   {
-    name: "Lommodo quiutvenia",
+    name: "GFO Fireball",
     image:
-      "https://opencart4.magentech.com/themes/so_emarket/layout2/image/cache/catalog/demo/product/index2/7-270x270.jpg",
-    price: 72,
+      "https://gfofireequipments.com/wp-content/uploads/2025/11/Fireball.jpg",
+    price: 4000,
     rating: 0,
   },
   {
-    name: "Ninim spareri magna",
+    name: "GFO Fireball",
     image:
-      "https://opencart4.magentech.com/themes/so_emarket/layout2/image/cache/catalog/demo/product/index2/19-270x270.jpg",
-    price: 94,
+      "https://gfofireequipments.com/wp-content/uploads/2025/11/Fireball.jpg",
+    price: 4000,
     rating: 0,
   },
 ];
