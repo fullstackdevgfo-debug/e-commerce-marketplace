@@ -1,176 +1,67 @@
-/* ===== FEATURES SECTION ===== */
-.features {
-  padding: 60px 0;
-  background: #ffffff;
-}
-
-/* Grid */
-/* .features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 30px;
-} */
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 30px;
-}
-.feature-item {
-  min-width: 0;
-}
-
-
-/* Card */
-.feature-item {
+/* ===== FEATURES / POLICY SECTION ===== */
+.emarket-policy {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 18px;
-  padding: 25px 20px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
+  padding: 40px 0;
+  border-bottom: 1px solid #eee;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
-/* Top accent line */
-.feature-item::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 4px;
-  width: 100%;
-  background: linear-gradient(90deg, var(--primary-color), #ffb74d);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
-}
-
-.feature-item:hover::before {
-  transform: scaleX(1);
-}
-
-.feature-item:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
-}
-
-/* Icon */
-.feature-icon {
-  width: 68px;
-  height: 68px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #ffb74d, var(--primary-color));
+.emarket-policy-item {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
-  font-size: 26px;
-  flex-shrink: 0;
-  transition: all 0.4s ease;
-}
-
-.feature-item:hover .feature-icon {
-  transform: rotate(-8deg) scale(1.08);
-}
-
-/* Content */
-.feature-content {
+  gap: 15px;
   flex: 1;
+  min-width: 200px;
 }
 
-.feature-title {
+.emarket-policy-icon {
+  color: #ff8e00;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emarket-policy-title {
   font-size: 14px;
   font-weight: 700;
-  letter-spacing: 0.5px;
-  color: var(--text-dark);
-  margin-bottom: 6px;
-  text-transform: uppercase;
+  color: #222;
+  margin: 0;
+  line-height: 1.2;
 }
 
-.feature-text {
-  font-size: 13px;
-  color: var(--text-light);
+.emarket-policy-desc {
+  font-size: 12px;
+  color: #888;
+  margin: 4px 0 0 0;
 }
 
-/* ===== MOBILE ===== */
+/* Responsive adjustments */
 @media (max-width: 1200px) {
-  .features-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (max-width: 992px) {
-  .features-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 576px) {
-  .features-grid {
-    grid-template-columns: 1fr;
-  }
-}
-@media (max-width: 576px) {
-  .feature-item {
-    justify-content: center;
-    text-align: center;
-    flex-direction: column;
+  .emarket-policy-item {
+    min-width: calc(33.33% - 20px);
   }
 }
 
 @media (max-width: 768px) {
-  .features {
-    padding: 40px 0;
+  .emarket-policy {
+    padding: 30px 15px;
+    justify-content: center;
   }
 
-  .feature-item {
-    padding: 20px;
-  }
-
-  .feature-icon {
-    width: 60px;
-    height: 60px;
-    font-size: 24px;
+  .emarket-policy-item {
+    min-width: calc(50% - 20px);
   }
 }
 
-.features {
-  overflow: visible;
+@media (max-width: 480px) {
+  .emarket-policy-item {
+    min-width: 100%;
+    justify-content: flex-start;
+    padding-left: 20px;
+  }
 }
-
-
-.feature-icon {
-  width: 68px;
-  height: 68px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-size: 28px;
-  flex-shrink: 0;
-  transition: all 0.4s ease;
-}
-.feature-item:nth-child(1) .feature-icon {
-  background: linear-gradient(135deg, #42a5f5, #1e88e5);
-}
-
-.feature-item:nth-child(2) .feature-icon {
-  background: linear-gradient(135deg, #66bb6a, #43a047);
-}
-
-.feature-item:nth-child(3) .feature-icon {
-  background: linear-gradient(135deg, #ff7043, #f4511e);
-}
-
-.feature-item:nth-child(4) .feature-icon {
-  background: linear-gradient(135deg, #ab47bc, #8e24aa);
-}
-
-.feature-item:nth-child(5) .feature-icon {
-  background: linear-gradient(135deg, #ffa726, #fb8c00);
-}
-
