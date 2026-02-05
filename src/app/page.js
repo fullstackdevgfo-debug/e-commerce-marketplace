@@ -1,3 +1,7 @@
+
+import Categories from "@/sections/categories";
+import DealsOfWeek from "@/sections/deals";
+import HomeShowcase from "@/sections/homeShowcase";
 import {
   Hero,
   Features,
@@ -11,6 +15,9 @@ export default function Home() {
     <main>
       <Hero />
       <Features />
+      <Categories />
+      <DealsOfWeek />
+      <HomeShowcase />
       <FeaturedProducts />
       <BrandSection />
       <BlogSection />

@@ -1,27 +1,76 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import "../../styles/hero.css";
+
+const slides = [
+  {
+    title: "HOT RIGHT NOW",
+    text: `Summer whites and bright tropical prints
+capture a breezy, island vibe.`,
+    image: "/banner.webp",
+  },
+  {
+    title: "NEW ARRIVALS",
+    text: `Discover fresh styles and
+exclusive collections.`,
+    image: "/banner.webp",
+  },
+  {
+    title: "BEST DEALS",
+    text: `Limited time offers
+on top brands.`,
+    image: "/banner.webp",
+  },
+];
+
 export const Hero = () => {
+  const [active, setActive] = useState(0);
+
+  // Auto slide
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActive((prev) => (prev + 1) % slides.length);
+    }, 4000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="hero">
-      <div className="hero-image">
-        <img
-          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='600'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23f5d5c8'/%3E%3Cstop offset='100%25' style='stop-color:%23e8c4b3'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23bg)' width='1600' height='600'/%3E%3C/svg%3E"
-          alt="Background"
+      {/* Background images */}
+      {slides.map((slide, i) => (
+        <div
+          key={i}
+          className={`hero-bg ${active === i ? "active" : ""}`}
+          style={{ backgroundImage: `url(${slide.image})` }}
         />
-      </div>
+      ))}
+
       <div className="container">
-        <div className="hero-content">
-          <h1 className="hero-title">HOT RIGHT NOW</h1>
+        <div key={active} className="hero-content">
+          <h1 className="hero-title">{slides[active].title}</h1>
           <p className="hero-text">
-            Summer whites and bright tropical prints
-            <br />
-            capture a breezy, island vibe.
+            {slides[active].text.split("\n").map((line, i) => (
+              <span key={i}>
+                {line}
+                <br />
+              </span>
+            ))}
           </p>
           <button className="hero-btn">Shop now</button>
         </div>
       </div>
+
+      {/* Dots */}
       <div className="hero-dots">
-        <span className="dot active"></span>
-        <span className="dot"></span>
-        <span className="dot"></span>
+        {slides.map((_, i) => (
+          <span
+            key={i}
+            className={`dot ${active === i ? "active" : ""}`}
+            onClick={() => setActive(i)}
+          />
+        ))}
       </div>
     </section>
   );
