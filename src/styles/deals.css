@@ -1,5 +1,5 @@
 .deals-section {
-  padding: 60px 0;
+  padding: 24px 0;
   background: #ffffff;
 }
 
@@ -178,7 +178,7 @@
 } */
 
 @media (max-width: 576px) {
-   .deals-wrapper {
+  .deals-wrapper {
     grid-template-columns: 1fr;
   }
   .products-grid {
@@ -246,4 +246,3 @@
     grid-template-columns: 1fr;
   }
 }
-
