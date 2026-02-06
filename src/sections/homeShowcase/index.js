@@ -1,88 +1,43 @@
 "use client";
-import { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 import "../../styles/homeShowcase.css";
 
 const banners = [
-  {
-    title: "Tropical Punch",
-    subtitle: "COLLECTION FOR WOMEN",
-    leftText: "HANDBAG FOR WOMEN",
-    rightText: "HANDBAG FOR WOMEN",
-    image: "/banner.webp",
-  },
-  {
-    title: "Summer Vibes",
-    subtitle: "NEW ARRIVALS",
-    leftText: "SALE 40% OFF",
-    rightText: "TRENDING NOW",
-    image: "/GFO-Fireball.png",
-  },
-  {
-    title: "Winter Drop",
-    subtitle: "EXCLUSIVE",
-    leftText: "LIMITED DEAL",
-    rightText: "HOT PICKS",
-    image: "/logo.webp",
-  },
+  { image: "https://i.pinimg.com/736x/ea/bd/aa/eabdaadef69a169117a2900e77bfde9f.jpg"  },
+  { image: "https://s3images.coroflot.com/user_files/individual_files/large_601412_pefdzgritogapshe0a4l4n0tb.jpg" },
+  { image: "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/89670937352801.573d3df298ad9.jpg"  },
 ];
 
 export default function HeroBanners() {
-  const [index, setIndex] = useState(0);
-
-  const prev = () => {
-    setIndex((prev) => (prev === 0 ? banners.length - 1 : prev - 1));
-  };
-
-  const next = () => {
-    setIndex((prev) => (prev === banners.length - 1 ? 0 : prev + 1));
-  };
-
-  const leftIndex = index === 0 ? banners.length - 1 : index - 1;
-  const rightIndex = index === banners.length - 1 ? 0 : index + 1;
-
   return (
     <section className="hero-banners">
-      <div className="hero-grid">
-
-        {/* LEFT */}
-        <div
-          className="hero-card left"
-          style={{ backgroundImage: `url(${banners[leftIndex].image})` }}
-        >
-          <div className="overlay">
-            <p>{banners[leftIndex].leftText}</p>
-            <h3>SALE 50% OFF</h3>
-            <a href="#">See More →</a>
-          </div>
-          <span className="arrow left-arrow" onClick={prev}>‹</span>
-        </div>
-
-        {/* CENTER */}
-        <div
-          className="hero-card center"
-          style={{ backgroundImage: `url(${banners[index].image})` }}
-        >
-          <div className="overlay center-text">
-            <p>{banners[index].subtitle}</p>
-            <h2>{banners[index].title}</h2>
-            <a href="#">See More →</a>
-          </div>
-        </div>
-
-        {/* RIGHT */}
-        <div
-          className="hero-card right"
-          style={{ backgroundImage: `url(${banners[rightIndex].image})` }}
-        >
-          <div className="overlay">
-            <p>{banners[rightIndex].rightText}</p>
-            <h3>SALE 50% OFF</h3>
-            <a href="#">See More →</a>
-          </div>
-          <span className="arrow right-arrow" onClick={next}>›</span>
-        </div>
-
-      </div>
+      <Swiper
+        modules={[Navigation, Autoplay]}
+        navigation={true}
+        autoplay={{ delay: 3000, disableOnInteraction: false }}
+        loop={true}
+        slidesPerView={3}
+        spaceBetween={20}
+        breakpoints={{
+          0: { slidesPerView: 1 },       // mobile: only center banner
+          768: { slidesPerView: 1 },
+          1025: { slidesPerView: 3 },    // desktop: 3 banners
+        }}
+      >
+        {banners.map((banner, idx) => (
+          <SwiperSlide key={idx}>
+            <div
+              className={`hero-card ${idx === 1 ? "center" : idx === 0 ? "left" : "right"}`}
+              style={{ backgroundImage: `url(${banner.image})` }}
+            >
+             
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </section>
   );
 }

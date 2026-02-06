@@ -64,8 +64,8 @@ export default function DealsOfWeek() {
 
   /* GROUP INTO SLIDES OF 8 */
   const slides = [];
-  for (let i = 0; i < filteredProducts.length; i += 8) {
-    slides.push(filteredProducts.slice(i, i + 8));
+  for (let i = 0; i < filteredProducts.length; i += 4) {
+    slides.push(filteredProducts.slice(i, i + 4));
   }
 
   const prevSlide = () =>
