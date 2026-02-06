@@ -1,0 +1,72 @@
+.emarket-category-slider {
+  padding: 10px 0;
+}
+
+.container.mx-auto.py-8.px-4 {
+  padding: 20px 24px;
+}
+
+.emarket-category-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 15px;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #f0f0f0;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: #333;
+}
+
+.emarket-category-card:hover {
+  border-color: var(--primary-color, #ff8e00);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.category-image-wrapper {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  /* background: #f9f9f9; */
+  border-radius: 50%;
+  padding: 15px;
+  transition: all 0.3s ease;
+}
+
+/* .emarket-category-card:hover .category-image-wrapper {
+  background: #fff5e6;
+} */
+
+.category-image-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.emarket-category-card span {
+  font-size: 14px;
+  font-weight: 600;
+  color: #222;
+  transition: color 0.3s ease;
+}
+
+.emarket-category-card:hover span {
+  color: var(--primary-color, #ff8e00);
+}
+
+@media (max-width: 768px) {
+  .category-image-wrapper {
+    width: 80px;
+    height: 80px;
+    padding: 12px;
+  }
+
+  .emarket-category-card span {
+    font-size: 13px;
+  }
+}

@@ -1,59 +1,35 @@
+import {
+  Truck,
+  Headphones,
+  RotateCcw,
+  CreditCard,
+  Percent,
+} from "lucide-react";
+
+const policies = [
+  { icon: Truck, title: "FREE DELIVERY", desc: "From $59.89" },
+  { icon: Headphones, title: "SUPPORT 24/7", desc: "Online 24 Hours" },
+  { icon: RotateCcw, title: "FREE RETURN", desc: "365 A Day" },
+  { icon: CreditCard, title: "PAYMENT METHOD", desc: "Secure Payment" },
+  { icon: Percent, title: "BIG SAVING", desc: "Weekend Sales" },
+];
+
 export const Features = () => {
   return (
-    <section className="features">
-      <div className="container">
-        <div className="features-grid">
-          <div className="feature-item">
-            <div className="feature-icon">
-              <i className="fas fa-truck"></i>
+    <div className="container mx-auto">
+      <div className="emarket-policy">
+        {policies.map((policy, index) => (
+          <div key={index} className="emarket-policy-item">
+            <div className="emarket-policy-icon">
+              <policy.icon size={32} strokeWidth={1.2} />
             </div>
-            <div className="feature-content">
-              <h3 className="feature-title">FREE DELIVERY</h3>
-              <p className="feature-text">From $59.89</p>
-            </div>
-          </div>
-
-          <div className="feature-item">
-            <div className="feature-icon">
-              <i className="fas fa-headset"></i>
-            </div>
-            <div className="feature-content">
-              <h3 className="feature-title">SUPPORT 24/7</h3>
-              <p className="feature-text">Online 24 Hours</p>
+            <div>
+              <h4 className="emarket-policy-title">{policy.title}</h4>
+              <p className="emarket-policy-desc">{policy.desc}</p>
             </div>
           </div>
-
-          <div className="feature-item">
-            <div className="feature-icon">
-              <i className="fas fa-undo"></i>
-            </div>
-            <div className="feature-content">
-              <h3 className="feature-title">FREE RETURN</h3>
-              <p className="feature-text">365 A Day</p>
-            </div>
-          </div>
-
-          <div className="feature-item">
-            <div className="feature-icon">
-              <i className="fas fa-credit-card"></i>
-            </div>
-            <div className="feature-content">
-              <h3 className="feature-title">PAYMENT METHOD</h3>
-              <p className="feature-text">Secure Payment</p>
-            </div>
-          </div>
-
-          <div className="feature-item">
-            <div className="feature-icon">
-              <i className="fas fa-piggy-bank"></i>
-            </div>
-            <div className="feature-content">
-              <h3 className="feature-title">BIG SAVING</h3>
-              <p className="feature-text">Weekend Sales</p>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
-    </section>
+    </div>
   );
 };

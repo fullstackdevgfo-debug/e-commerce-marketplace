@@ -1,0 +1,159 @@
+.emarket-blog-section {
+  padding: 48px 0;
+  background-color: #fff;
+}
+
+.emarket-blog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #ebebeb;
+  position: relative;
+}
+
+.emarket-section-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #222;
+  margin: 0;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+.emarket-section-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary-color, #ff9800);
+}
+
+.emarket-carousel-controls {
+  display: flex;
+  gap: 8px;
+  padding-bottom: 10px;
+}
+
+.emarket-carousel-nav {
+  width: 32px;
+  height: 12px;
+  background-color: #333;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+  border-radius: 2px;
+}
+
+.emarket-carousel-nav.active,
+.emarket-carousel-nav:hover {
+  background-color: var(--primary-color, #ff9800);
+}
+
+.emarket-blog-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+@media (max-width: 1024px) {
+  .emarket-blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .emarket-blog-section {
+    padding: 30px 15px;
+  }
+
+  .emarket-blog-header {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .emarket-blog-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.emarket-blog-card {
+  background: none;
+}
+
+.emarket-blog-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 15px;
+  border-radius: 4px;
+}
+
+.emarket-blog-image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.emarket-blog-card:hover .emarket-blog-image-wrapper img {
+  transform: scale(1.1);
+}
+
+.emarket-blog-content {
+  padding: 0;
+}
+
+.emarket-blog-title {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 12px;
+  line-height: 1.4;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.emarket-blog-title:hover {
+  color: var(--primary-color, #ff9800);
+}
+
+.emarket-blog-meta {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 0.8125rem;
+  color: #999;
+}
+
+.emarket-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.emarket-meta-item svg {
+  width: 14px;
+  height: 14px;
+  color: #999;
+}
+
+/* Specific to the image date overlay if needed, but the latest image shows it at the bottom */
+.emarket-blog-date-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background-color: #fff;
+  padding: 5px 10px;
+  text-align: center;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: none; /* Hidden based on the latest reference image */
+}

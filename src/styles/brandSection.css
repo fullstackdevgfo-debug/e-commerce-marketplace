@@ -1,0 +1,90 @@
+.emarket-brand-section {
+  padding: 40px 0;
+  border-top: 1px solid var(--border-color, #e0e0e0);
+  border-bottom: 1px solid var(--border-color, #e0e0e0);
+  background-color: #fff;
+}
+
+.emarket-brand-container {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.emarket-brand-carousel-nav {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #f5f5f5;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #222;
+  flex-shrink: 0;
+}
+
+.emarket-brand-carousel-nav:hover {
+  background-color: var(--primary-color, #ff9800);
+  color: #fff;
+}
+
+.emarket-brand-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  gap: 20px;
+}
+
+.emarket-brand-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.emarket-brand-item img {
+  max-width: 140px;
+  max-height: 75px;
+  width: auto;
+  height: auto;
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.emarket-brand-item:hover img {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+@media (max-width: 1024px) {
+  .emarket-brand-list {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .emarket-brand-item {
+    flex: 0 0 calc(33.33% - 20px);
+  }
+}
+
+@media (max-width: 768px) {
+  .emarket-brand-section {
+    padding: 30px 15px;
+  }
+
+  .emarket-brand-container {
+    gap: 15px;
+  }
+
+  .emarket-brand-carousel-nav {
+    display: none;
+  }
+
+  .emarket-brand-item {
+    flex: 0 0 calc(50% - 20px);
+  }
+}
