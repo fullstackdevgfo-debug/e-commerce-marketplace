@@ -1,4 +1,6 @@
 import { Menu, ChevronDown, User, MapPin, Phone, X } from "lucide-react";
+import { navData } from "../../data/navData";
+import { MegaMenu } from "./megamenu";
 
 export const Navbar = ({ menuOpen, setMenuOpen }) => {
   const closeMenu = () => setMenuOpen && setMenuOpen(false);
@@ -20,31 +22,20 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
             </button>
           </li>
 
-          <li className="nav-item">
-            <a href="#" className="nav-link" onClick={closeMenu}>
-              Best Sellers
-            </a>
-          </li>
-          <li className="nav-item">
-            <a href="#" className="nav-link" onClick={closeMenu}>
-              Top Deals
-            </a>
-          </li>
-          <li className="nav-item">
-            <a href="#" className="nav-link" onClick={closeMenu}>
-              Blog
-            </a>
-          </li>
-          <li className="nav-item">
-            <a href="#" className="nav-link" onClick={closeMenu}>
-              About Us
-            </a>
-          </li>
-          <li className="nav-item">
-            <a href="#" className="nav-link" onClick={closeMenu}>
-              Contact
-            </a>
-          </li>
+          {navData.map((item) => (
+            <li className="nav-item" key={item.id}>
+              <a href={item.path} className="nav-link" onClick={closeMenu}>
+                {item.title}
+                {item.hasMegaMenu && <ChevronDown size={14} />}
+                {item.badge && (
+                  <span className={`nav-badge ${item.badge.toLowerCase()}`}>
+                    {item.badge}
+                  </span>
+                )}
+              </a>
+              {item.hasMegaMenu && <MegaMenu data={item} />}
+            </li>
+          ))}
         </ul>
 
         <div className="nav-right-info">
