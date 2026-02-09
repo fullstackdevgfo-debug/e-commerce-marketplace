@@ -1,4 +1,6 @@
 import { Menu, ChevronDown, User, MapPin, Phone, X } from "lucide-react";
+import { navData } from "../../data/navData";
+import { MegaMenu } from "./megamenu";
 
 export const Navbar = ({ menuOpen, setMenuOpen }) => {
   const closeMenu = () => setMenuOpen && setMenuOpen(false);
