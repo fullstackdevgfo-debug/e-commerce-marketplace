@@ -1,3 +1,7 @@
+"use client";
+
+import Link from "next/link";
+import { useEffect, useState } from "react";
 import {
   Search,
   Heart,
@@ -8,15 +12,40 @@ import {
 } from "lucide-react";
 
 export const Header = ({ menuOpen, setMenuOpen }) => {
+  const [cartCount, setCartCount] = useState(0);
+  const [cartTotal, setCartTotal] = useState(0);
+
+  /* ---------------- LOAD CART ---------------- */
+  const loadCart = () => {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const total = cart.reduce(
+      (sum, item) => sum + item.price * item.quantity,
+      0
+    );
+
+    setCartCount(count);
+    setCartTotal(total);
+  };
+
+  useEffect(() => {
+    loadCart();
+
+    // Sync across tabs & updates
+    window.addEventListener("storage", loadCart);
+    return () => window.removeEventListener("storage", loadCart);
+  }, []);
+
   return (
     <div className="emarket-main-header">
       <div className="container">
         {/* Logo */}
-        <a href="/" className="emarket-logo">
+        <Link href="/" className="emarket-logo">
           <img src="/logo.webp" alt="logo" />
-        </a>
+        </Link>
 
-        {/* Search Box */}
+        {/* Search */}
         <div className="emarket-search-container">
           <div className="emarket-search-box">
             <select className="emarket-search-select">
@@ -37,29 +66,35 @@ export const Header = ({ menuOpen, setMenuOpen }) => {
           </div>
         </div>
 
-        {/* Header Actions */}
+        {/* Actions */}
         <div className="header-actions">
           <button className="action-icon-btn">
             <RefreshCw size={22} />
           </button>
 
-          <button className="action-icon-btn">
+          {/* Wishlist */}
+          <Link href="/wishlist" className="action-icon-btn">
             <Heart size={22} />
-          </button>
+          </Link>
 
-          <div className="cart-wrapper">
+          {/* Cart */}
+          <Link href="/cart" className="cart-wrapper">
             <div className="cart-icon-container">
               <ShoppingBasket size={28} />
-              <span className="cart-badge">0</span>
+              {cartCount > 0 && (
+                <span className="cart-badge">{cartCount}</span>
+              )}
             </div>
             <div className="cart-text">
               <span className="cart-label">MY CART</span>
-              <span className="cart-value">$0.00</span>
+              <span className="cart-value">
+                ₹ {cartTotal.toLocaleString()}
+              </span>
             </div>
-          </div>
+          </Link>
         </div>
 
-        {/* Mobile Toggle Button (Visible only on mobile via CSS) */}
+        {/* Mobile */}
         <button
           className="mobile-toggle"
           onClick={() => setMenuOpen(!menuOpen)}

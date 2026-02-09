@@ -1,5 +1,5 @@
 
-import Categories from "@/sections/categories";
+import Categories from "@/sections/categories/CategoryHome";
 import DealsOfWeek from "@/sections/deals";
 import HomeShowcase from "@/sections/homeShowcase";
 import {

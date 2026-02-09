@@ -89,7 +89,7 @@
 .emarket-search-box {
   display: flex;
   border: 1px solid var(--emarket-border);
-  border-radius: 4px;
+  border-radius: 24px;
   overflow: hidden;
 }
 

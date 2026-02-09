@@ -1,0 +1,179 @@
+.cart-page {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background: #f7f7f7;
+}
+
+.cart-page h1 {
+  margin-bottom: 20px;
+}
+
+.cart-content {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* LEFT: Cart Items */
+.cart-items {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cart-item {
+  display: flex;
+  gap: 20px;
+  background: #fff;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.cart-item-image {
+  flex-shrink: 0;
+}
+
+.item-details h2 {
+  margin: 0 0 5px;
+  font-size: 16px;
+}
+.cart-price {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.cart-new-price {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111;
+}
+
+.cart-old-price {
+  font-size: 14px;
+  text-decoration: line-through;
+  color: #888;
+}
+
+.cart-discount {
+  font-size: 13px;
+  font-weight: 700;
+  color: #b12704;
+}
+
+
+.stock {
+  color: #007600;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.delivery {
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.price {
+  margin-bottom: 10px;
+}
+
+.new-price {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #888;
+  margin-right: 10px;
+}
+
+.discount {
+  color: #B12704;
+  font-weight: bold;
+}
+
+/* Quantity and actions */
+.quantity-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.quantity-selector button {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  background: #f0f0f0;
+  cursor: pointer;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  color: #007185;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Item links like Amazon */
+.item-links {
+  font-size: 12px;
+  color: #007185;
+}
+
+/* RIGHT: Cart Summary */
+.cart-summary {
+  flex: 1;
+  background: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  height: fit-content;
+}
+
+.cart-summary h2 {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+
+.checkout-btn {
+  width: 100%;
+  padding: 12px;
+  background: #FFD814;
+  border: 1px solid #FCD200;
+  color: #111;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.checkout-btn:hover {
+  background: #f7ca00;
+}
+
+.emi-info {
+  font-size: 14px;
+  color: #111;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .cart-content {
+    flex-direction: column;
+  }
+}
