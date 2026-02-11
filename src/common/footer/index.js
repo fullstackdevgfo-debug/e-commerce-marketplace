@@ -50,27 +50,37 @@ export const CommonFooter = () => {
               <h5 className="emarket-footer-title">Information</h5>
               <ul>
                 <li>
-                  <a href="#" className="emarket-footer-link">
+                  <a href="/about" className="emarket-footer-link">
                     About Us
                   </a>
                 </li>
-                <li>
-                  <a href="#" className="emarket-footer-link">
-                    Delivery Information
+                 <li>
+                  <a href="/faqs" className="emarket-footer-link">
+                    FAQs
                   </a>
                 </li>
-                <li>
-                  <a href="#" className="emarket-footer-link">
+                 <li>
+                  <a href="/privacy-policy" className="emarket-footer-link">
                     Privacy Policy
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="emarket-footer-link">
+                  <a href="/shipping-policy" className="emarket-footer-link">
+                    Shipping Policy
+                  </a>
+                </li>
+                <li>
+                  <a href="/returns-policy" className="emarket-footer-link">
+                    Refunds & Returns Policy
+                  </a>
+                </li>
+                <li>
+                  <a href="/terms-and-conditions" className="emarket-footer-link">
                     Terms & Conditions
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="emarket-footer-link">
+                  <a href="/contact" className="emarket-footer-link">
                     Contact Us
                   </a>
                 </li>
@@ -181,7 +191,7 @@ export const CommonFooter = () => {
 
           {/* Copyright */}
           <div className="emarket-footer-copyright">
-            <p>© 2025 eMarket. All Rights Reserved. Designed by MagenTech</p>
+            <p>© 2025 eMarket. All Rights Reserved.</p>
           </div>
         </div>
       </footer>

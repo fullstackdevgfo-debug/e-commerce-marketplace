@@ -16,49 +16,32 @@
   overflow: hidden;
   background-size: cover;
   background-position: center;
+  transition: background 0.4s ease;
 }
 
-/* BACKGROUNDS */
-.hero-card.left {
-  background-image: url("/banner-left.jpg");
-}
-
-.hero-card.center {
-  background-image: url("/banner-center.jpg");
-}
-
-.hero-card.right {
-  background-image: url("/banner-right.jpg");
-}
-
-/* DARK OVERLAY */
+/* DARK OVERLAY ON LEFT & RIGHT */
 .hero-card::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.45);
+  /* background: rgba(0,0,0,0);  */
+  transition: background 0.4s ease;
+  z-index: 1;
 }
+
+/* .hero-card.left::before,
+.hero-card.right::before {
+  background: rgba(41, 41, 41, 0.45);
+} */
 
 /* TEXT OVERLAY */
 .overlay {
   position: relative;
   z-index: 2;
   color: #fff;
-  padding: 30px;
+  padding: 20px;
   top: 50%;
   transform: translateY(-50%);
-}
-
-.overlay p {
-  font-size: 13px;
-  letter-spacing: 1px;
-  opacity: 0.9;
-}
-
-.overlay h3 {
-  font-size: 26px;
-  color: #ffa500;
-  margin: 10px 0;
 }
 
 .center-text {
@@ -67,14 +50,19 @@
 
 .center-text h2 {
   font-size: 36px;
-  margin: 10px 0;
+  margin-top: 10px;
 }
 
-/* LINK */
-.overlay a {
+.overlay p {
   font-size: 14px;
-  color: #fff;
-  text-decoration: none;
+  letter-spacing: 1px;
+  opacity: 0.9;
+}
+
+.overlay h3 {
+  font-size: 26px;
+  color: #ffa500;
+  margin: 5px 0;
 }
 
 /* ARROWS */
@@ -91,33 +79,19 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-}
-
-.arrow i {
-  color: #000;
-}
-
-.left-arrow {
-  right: 20px;
-}
-
-.right-arrow {
-  left: 20px;
-}
-
-.hero-card {
-  transition: background-image 0.4s ease-in-out;
-}
-
-.arrow {
   font-size: 22px;
   font-weight: bold;
+  color: #000;
+  
 }
 
-/* RESPONSIVE */
+.left-arrow { right: 20px; }
+.right-arrow { left: 20px; }
+
+/* RESPONSIVE: MOBILE */
 @media (max-width: 1024px) {
   .hero-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* single column */
   }
 
   .hero-card {
@@ -125,6 +99,16 @@
   }
 
   .center-text h2 {
-    font-size: 28px;
+    font-size: 26px;
+  }
+
+  /* hide left & right on mobile */
+  .hide-on-mobile {
+    display: none;
+  }
+
+  /* Center arrows optional */
+  .hero-card.center .arrow {
+    display: flex;
   }
 }

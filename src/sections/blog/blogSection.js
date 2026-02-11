@@ -3,6 +3,8 @@ import { Calendar, MessageSquare } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 
+import Link from "next/link";
+
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
@@ -10,6 +12,7 @@ import "swiper/css/pagination";
 const blogs = [
   {
     title: "Duis Autem Vel Eum Tempor Invidunt Ut Labore Et",
+     slug: "innovative-fire-safety-solutions",
     image:
       "https://gfofireequipments.com/wp-content/uploads/2025/02/banner_fire_8.webp",
     date: { day: "14", month: "February" },
@@ -17,6 +20,7 @@ const blogs = [
   },
   {
     title: "Enim Ad Minim Veniam Justo Duo Dolores Et Ea",
+     slug: "innovative-fire-safety-solutions",
     image:
       "https://gfofireequipments.com/wp-content/uploads/2025/02/banner_fire_8.webp",
     date: { day: "14", month: "February" },
@@ -24,6 +28,7 @@ const blogs = [
   },
   {
     title: "Duis Autem Vel Eum Irure Sed Diam Nonumy",
+     slug: "innovative-fire-safety-solutions",
     image:
       "https://gfofireequipments.com/wp-content/uploads/2025/02/banner_fire_8.webp",
     date: { day: "14", month: "February" },
@@ -31,6 +36,7 @@ const blogs = [
   },
   {
     title: "Lorem Ipsum Dolor Sit Amet",
+     slug: "innovative-fire-safety-solutions",
     image:
       "https://gfofireequipments.com/wp-content/uploads/2025/02/banner_fire_8.webp",
     date: { day: "13", month: "February" },
@@ -38,6 +44,7 @@ const blogs = [
   },
   {
     title: "Fire Protection Systems Maintenance and Safety",
+     slug: "innovative-fire-safety-solutions",
     image:
       "https://gfofireequipments.com/wp-content/uploads/2025/02/banner_fire_8.webp",
     date: { day: "12", month: "February" },
@@ -85,14 +92,17 @@ export const BlogSection = () => {
               <SwiperSlide key={index}>
                 <div className="emarket-blog-card">
                   <div className="emarket-blog-image-wrapper">
-                    <a href="#">
-                      <img src={blog.image} alt={blog.title} />
-                    </a>
+                    <Link href={`/blog/${blog.slug}`}>
+                  <img src={blog.image} alt={blog.title} />
+                </Link>
+
+
+
                   </div>
                   <div className="emarket-blog-content">
-                    <a href="#" className="emarket-blog-title">
+                    <Link href={`/blog/${blog.slug}`}className="emarket-blog-title">
                       {blog.title}
-                    </a>
+                    </Link>
                     <div className="emarket-blog-meta">
                       <div className="emarket-meta-item">
                         <Calendar size={14} />

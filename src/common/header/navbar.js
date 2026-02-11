@@ -1,4 +1,6 @@
 import { Menu, ChevronDown, User, MapPin, Phone, X } from "lucide-react";
+import { navData } from "../../data/navData";
+import { MegaMenu } from "./megamenu";
 
 export const Navbar = ({ menuOpen, setMenuOpen }) => {
   const closeMenu = () => setMenuOpen && setMenuOpen(false);
@@ -31,17 +33,17 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
             </a>
           </li>
           <li className="nav-item">
-            <a href="#" className="nav-link" onClick={closeMenu}>
+            <a href="/blog" className="nav-link" onClick={closeMenu}>
               Blog
             </a>
           </li>
           <li className="nav-item">
-            <a href="#" className="nav-link" onClick={closeMenu}>
+            <a href="/about" className="nav-link" onClick={closeMenu}>
               About Us
             </a>
           </li>
           <li className="nav-item">
-            <a href="#" className="nav-link" onClick={closeMenu}>
+            <a href="/contact" className="nav-link" onClick={closeMenu}>
               Contact
             </a>
           </li>
