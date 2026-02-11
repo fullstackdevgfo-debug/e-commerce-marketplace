@@ -16,6 +16,8 @@ const faqs = [
   { question: "When will I receive my refund?", answer: "Refunds are processed within 5 working days after the product reaches our warehouse. You’ll be notified via email and SMS." },
 ];
 
+
+
 export default function FAQsPage() {
   const [activeIndex, setActiveIndex] = useState(null);
   const [search, setSearch] = useState("");
