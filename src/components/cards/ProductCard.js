@@ -92,6 +92,106 @@
 
 
 
+// "use client";
+
+// import { useState } from "react";
+// import { useRouter } from "next/navigation";
+// import QuickViewModal from "@/components/QuickViewModal/QuickViewModal";
+// import { useWishlist } from "@/context/WishlistContext";
+// import "@/styles/categoryGrid.css";
+
+// export default function ProductCard({ product }) {
+//   if (!product) return null;
+
+//   const [quickView, setQuickView] = useState(false);
+//   const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
+//   const router = useRouter();
+
+//   const isFavorited = isInWishlist(product.id);
+
+//   const toggleWishlist = (e) => {
+//     e.stopPropagation();
+//     isFavorited
+//       ? removeFromWishlist(product.id)
+//       : addToWishlist(product);
+//   };
+
+//   const handleAddToCart = (e) => {
+//     e.stopPropagation();
+//     router.push("/cart");
+//     router.refresh();
+//   };
+
+//   return (
+//     <>
+//       <div className="product-card">
+
+//         {/* IMAGE */}
+//         <div className="product-image">
+//           <div className="product-actions left">
+//             <button onClick={handleAddToCart}>
+//               <i className="fa fa-shopping-cart" />
+//             </button>
+
+//             <button onClick={toggleWishlist}>
+//               <i
+//                 className="fa fa-heart"
+//                 style={{ color: isFavorited ? "red" : "#555" }}
+//               />
+//             </button>
+
+//             <button>
+//               <i className="fa fa-refresh" />
+//             </button>
+
+//             <button
+//               onClick={(e) => {
+//                 e.stopPropagation();
+//                 setQuickView(true);
+//               }}
+//             >
+//               <i className="fa fa-eye" />
+//             </button>
+//           </div>
+
+//           {product.discount && (
+//             <span className="discount-badge">
+//               -{product.discount}%
+//             </span>
+//           )}
+
+//           <img
+//             src={product.image || "/placeholder.png"}
+//             alt={product.name}
+//             onClick={() => router.push(`/product/${product.id}`)}
+//           />
+//         </div>
+
+//         {/* PRODUCT DETAILS */}
+//         <div className="product-content">
+//           <h3 className="product-title">{product.name}</h3>
+
+//           <div className="price">
+//             <span className="new-price">₹{product.price}</span>
+//             {product.oldPrice && (
+//               <span className="old-price">₹{product.oldPrice}</span>
+//             )}
+//           </div>
+//         </div>
+//       </div>
+
+//       {quickView && (
+//         <QuickViewModal
+//           product={product}
+//           onClose={() => setQuickView(false)}
+//         />
+//       )}
+//     </>
+//   );
+// }
+
+
+
 
 "use client";
 
@@ -102,33 +202,47 @@ import { useWishlist } from "@/context/WishlistContext";
 import "@/styles/categoryGrid.css";
 
 export default function ProductCard({ product }) {
+  if (!product) return null;
+
+  const {
+    id,
+    name = "Product Name",
+    image = "/placeholder.png",
+    price = 0,
+    oldPrice = 121,
+    discount = null,
+  } = product;
+
   const [quickView, setQuickView] = useState(false);
   const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
   const router = useRouter();
 
-  const isFavorited = isInWishlist(product.id);
+  const isFavorited = isInWishlist(id);
 
   const toggleWishlist = (e) => {
     e.stopPropagation();
-    isFavorited
-      ? removeFromWishlist(product.id)
-      : addToWishlist(product);
+    isFavorited ? removeFromWishlist(id) : addToWishlist(product);
   };
 
   const handleAddToCart = (e) => {
     e.stopPropagation();
-
-    // addToCart(product); // if using CartContext
-
     router.push("/cart");
-    router.refresh(); // ✅ force reload cart data
+  };
+
+  const goToProduct = () => {
+    router.push(`/product/${id}`);
   };
 
   return (
     <>
-      <div className="product-card">
+      <div className="product-card" onClick={goToProduct}>
+        {/* IMAGE */}
         <div className="product-image">
-          <div className="product-actions left">
+          {/* LEFT ACTIONS */}
+          <div
+            className="product-actions left"
+            onClick={(e) => e.stopPropagation()}
+          >
             <button onClick={handleAddToCart}>
               <i className="fa fa-shopping-cart" />
             </button>
@@ -144,28 +258,35 @@ export default function ProductCard({ product }) {
               <i className="fa fa-refresh" />
             </button>
 
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setQuickView(true);
-              }}
-            >
+            <button onClick={() => setQuickView(true)}>
               <i className="fa fa-eye" />
             </button>
           </div>
 
-          {product.discount && (
-            <span className="discount-badge">-{product.discount}%</span>
+          {/* DISCOUNT */}
+          {discount && (
+            <span className="discount-badge">-{discount}%</span>
           )}
 
+          {/* PRODUCT IMAGE */}
           <img
-            src={product.image}
-            alt={product.name}
-            onClick={() => router.push(`/product/${product.id}`)}
+            src={image}
+            alt={name}
+            loading="lazy"
+            draggable={false}
           />
+        </div>
+
+        {/* PRODUCT DETAILS */}
+        <div className="product-content">
+          <h3 className="product-title">{name}</h3>
+           <p className="price">
+              ${price} <span>${oldPrice}</span>
+            </p>
         </div>
       </div>
 
+      {/* QUICK VIEW */}
       {quickView && (
         <QuickViewModal
           product={product}

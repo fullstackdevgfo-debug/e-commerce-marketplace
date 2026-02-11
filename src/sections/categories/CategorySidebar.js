@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import "@/styles/category.css";
 
 export default function CategorySidebar({ open, onClose }) {
   const [collapse, setCollapse] = useState({

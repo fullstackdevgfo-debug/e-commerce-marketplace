@@ -8,8 +8,8 @@ export default function CheckoutPage() {
 
   const [address, setAddress] = useState({
     name: "Chandra",
-    line1: "B 39, Jai Vihar",
-    line2: "25 feet road",
+    line1: "avvdf",
+    line2: "gfhgf",
     city: "New Delhi",
     state: "Delhi",
     pincode: "110043",
