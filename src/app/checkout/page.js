@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "@/styles/checkout.css";
 
 export default function CheckoutPage() {
@@ -17,6 +17,11 @@ export default function CheckoutPage() {
   });
 
   const [tempAddress, setTempAddress] = useState(address);
+
+  /* 🔒 LOCK BODY SCROLL WHEN MODAL OPEN */
+  useEffect(() => {
+    document.body.style.overflow = showAddressModal ? "hidden" : "auto";
+  }, [showAddressModal]);
 
   const saveAddress = () => {
     setAddress(tempAddress);
@@ -100,8 +105,11 @@ export default function CheckoutPage() {
 
       {/* ADDRESS MODAL */}
       {showAddressModal && (
-        <div className="modal-overlay">
-          <div className="modal">
+        <div
+          className="modal-overlay"
+          onClick={() => setShowAddressModal(false)}
+        >
+          <div className="modal" onClick={(e) => e.stopPropagation()}>
             <h3>Add delivery address</h3>
 
             <input
@@ -149,6 +157,14 @@ export default function CheckoutPage() {
               value={tempAddress.pincode}
               onChange={(e) =>
                 setTempAddress({ ...tempAddress, pincode: e.target.value })
+              }
+            />
+
+            <input
+              placeholder="Country"
+              value={tempAddress.country}
+              onChange={(e) =>
+                setTempAddress({ ...tempAddress, country: e.target.value })
               }
             />
 

@@ -348,11 +348,7 @@ const handleAddToCart = () => {
         </div>
 
         <p className="description">{sampleProduct.description}</p>
-
-        {/* <div className="price">
-            ${sampleProduct.price.toFixed(2)}
-            {sampleProduct.oldPrice && <span>${sampleProduct.oldPrice.toFixed(2)}</span>}
-          </div> */}
+        
           <div className="price">
             ${sampleProduct.price.toFixed(2)}
             {sampleProduct.oldPrice && <span>${sampleProduct.oldPrice.toFixed(2)}</span>}
