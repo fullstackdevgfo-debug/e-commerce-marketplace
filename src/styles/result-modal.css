@@ -1,0 +1,100 @@
+/* BACKDROP */
+.result-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+
+/* CARD */
+.result-card {
+  background: #ffffff;
+  max-width: 420px;
+  width: 90%;
+  padding: 40px;
+  border-radius: 32px;
+  text-align: center;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+  position: relative;
+  z-index: 100000;
+}
+
+.result-card h2 {
+  font-size: 28px;
+  font-weight: 800;
+  margin: 10px 0;
+}
+
+.result-card p {
+  color: #64748b;
+  font-size: 15px;
+}
+
+.icon {
+  font-size: 48px;
+}
+
+.score {
+  font-size: 64px;
+  font-weight: 900;
+  color: #1a3a63;
+  margin: 20px 0;
+}
+
+/* STATS */
+.result-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+.result-stats div {
+  background: #f8fafc;
+  padding: 14px;
+  border-radius: 18px;
+  border: 1px solid #e2e8f0;
+}
+
+.result-stats span {
+  font-size: 11px;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+
+.result-stats b {
+  font-size: 22px;
+}
+
+.success b { color: #059669; }
+.error b { color: #dc2626; }
+
+/* BUTTON */
+.primary-btn {
+  width: 100%;
+  padding: 18px;
+  background: #1a3a63;
+  color: white;
+  border: none;
+  border-radius: 18px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* PARTY */
+.party-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100001;
+}
+
+.confetti {
+  position: absolute;
+  font-size: 1.6rem;
+}

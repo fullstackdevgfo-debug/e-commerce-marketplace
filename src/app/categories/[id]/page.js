@@ -29,7 +29,7 @@ export default function CategoryPage({ params }) {
           <div className="category-main">
             <h2 className="category-title">{categoryName}</h2>
 
-            <CategoryToolbar onFilterClick={() => setShowSidebar(true)} />
+            {/* <CategoryToolbar onFilterClick={() => setShowSidebar(true)} /> */}
 
             <CategoryGrid />
           </div>
