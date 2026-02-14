@@ -13,7 +13,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import "../../styles/education.css";
 import "../../styles/result-modal.css";
 
-// dummy data - replace with API calls in real app
 const videos = [
   {
     id: 1,
@@ -60,20 +59,19 @@ const videos = [
 
 export default function EducationModule() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [answers, setAnswers] = useState({});
   const [completedVideos, setCompletedVideos] = useState([]);
+  const [answers, setAnswers] = useState({});
+  const [showQuestions, setShowQuestions] = useState(false);
   const [showResult, setShowResult] = useState(false);
   const [correct, setCorrect] = useState(0);
   const [name, setName] = useState("Learner");
 
-  // Load user data and progress from localStorage on mount
   useEffect(() => {
     setName(localStorage.getItem("edu_name") || "Learner");
     setCompletedVideos(JSON.parse(localStorage.getItem("edu_completed")) || []);
     setCurrentIndex(Number(localStorage.getItem("edu_index")) || 0);
   }, []);
 
-  // Save progress to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem("edu_completed", JSON.stringify(completedVideos));
     localStorage.setItem("edu_index", currentIndex);
@@ -98,11 +96,9 @@ export default function EducationModule() {
     }
   };
 
-  const percentage = Math.round((correct / total) * 100) || 0;
-
   return (
     <section className="edu-page">
-      
+      {/* ================= LEFT ================= */}
       <div className="edu-main">
         <h1>{currentVideo.title}</h1>
 
@@ -112,33 +108,39 @@ export default function EducationModule() {
           <span><Award size={16} /> Safety Training</span>
         </div>
 
-        {currentVideo.url && (
-          <div className="video-wrapper">
-            <iframe src={currentVideo.url} allowFullScreen />
-          </div>
+        {/* 🎥 VIDEO (ONLY WHEN QUIZ NOT STARTED) */}
+        {!showQuestions && currentVideo.url && (
+          <>
+            <div className="video-wrapper">
+              <iframe src={currentVideo.url} allowFullScreen />
+            </div>
+
+            <button
+              className="complete-video-btn"
+              onClick={() => setShowQuestions(true)}
+            >
+              Complete Video & Start Test
+            </button>
+          </>
         )}
 
-        {currentVideo.questions && (
+        {/* 🧠 QUIZ */}
+        {showQuestions && (
           <div className="quiz-box">
             <h3>Assessment (Need 8/10 to pass)</h3>
-
-            <div className="progress-bar">
-              <div
-                className="progress"
-                style={{ width: `${(answered / total) * 100}%` }}
-              />
-            </div>
 
             {currentVideo.questions.map((item, i) => (
               <div key={i} className="question-card">
                 <p>{i + 1}. {item.q}</p>
 
                 <div className="options">
-                  {["Yes", "No", "Black"].map((opt) => (
+                  {["Yes", "No", "Black"].map(opt => (
                     <button
                       key={opt}
                       className={answers[i] === opt ? "selected" : ""}
-                      onClick={() => setAnswers({ ...answers, [i]: opt })}
+                      onClick={() =>
+                        setAnswers({ ...answers, [i]: opt })
+                      }
                     >
                       {opt}
                     </button>
@@ -158,6 +160,32 @@ export default function EducationModule() {
         )}
       </div>
 
+      {/* ================= RESULT MODAL ================= */}
+      <AnimatePresence>
+        {showResult && (
+          <div className="result-modal-backdrop">
+            <motion.div className="result-card">
+              <div className="icon">{correct >= 8 ? "🏆" : "📝"}</div>
+              <h2>{correct >= 8 ? "Passed!" : "Try Again"}</h2>
+              <div className="percentage-display-big">
+                {Math.round((correct / total) * 100)}%
+              </div>
+
+              <button
+                className="primary-btn"
+                onClick={() => {
+                  setShowResult(false);
+                  setAnswers({});
+                  setShowQuestions(false);
+                }}
+              >
+                Retry Module
+              </button>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
       {/* ================= RIGHT ================= */}
       <aside className="edu-sidebar">
         <div className="sidebar-card">
@@ -170,7 +198,7 @@ export default function EducationModule() {
             <small>Complete</small>
           </div>
 
-           <div className="stats">
+          <div className="stats">
             <div>
               <b>{answered}/{total}</b>
               <span>Answered</span>
@@ -194,7 +222,13 @@ export default function EducationModule() {
               <div
                 key={v.id}
                 className={`side-question ${done ? "done" : active ? "active" : "locked"}`}
-                onClick={() => !locked && (setCurrentIndex(i), setAnswers({}))}
+                onClick={() => {
+                  if (!locked) {
+                    setCurrentIndex(i);
+                    setAnswers({});
+                    setShowQuestions(false);
+                  }
+                }}
               >
                 {done ? <CheckCircle2 size={18} /> : active ? <PlayCircle size={18} /> : <Lock size={18} />}
                 <div>
@@ -206,34 +240,6 @@ export default function EducationModule() {
           })}
         </div>
       </aside>
-
-      {/* result modal */}
-      <AnimatePresence>
-        {showResult && (
-          <div className="result-modal-backdrop">
-            <motion.div className="result-card">
-              <div className="icon">{correct >= 8 ? "🏆" : "📝"}</div>
-              <h2>{correct >= 8 ? "Outstanding!" : "Try Again"}</h2>
-              <p>Well done, <b>{name}</b></p>
-
-              <div className="percentage-display-big">{percentage}%</div>
-
-              <button
-                className="primary-btn"
-                onClick={() => {
-                  setShowResult(false);
-                  setAnswers({});
-                  if (correct >= 8 && currentIndex < videos.length - 1) {
-                    setCurrentIndex(currentIndex + 1);
-                  }
-                }}
-              >
-                {correct >= 8 ? "Next Video" : "Retry Module"}
-              </button>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }
