@@ -50,10 +50,10 @@ export const Header = ({ menuOpen, setMenuOpen }) => {
           <div className="emarket-search-box">
             <select className="emarket-search-select">
               <option>All Category</option>
-              <option>Electronics</option>
-              <option>Fashion</option>
-              <option>Furniture</option>
-              <option>Accessories</option>
+              <option>Fire Extinguisher</option>
+              <option>Fire Ball</option>
+              <option>Smoke Detector</option>
+              <option>Smart Product</option>
             </select>
             <input
               type="text"

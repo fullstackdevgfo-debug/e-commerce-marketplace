@@ -26,21 +26,37 @@
   text-align: center;
   overflow: hidden;
   transition: box-shadow 0.3s ease;
+  height: 400px;  
 }
 
 .product-card:hover {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 }
 
-/* IMAGE */
+/* IMAGE FIX */
 .product-image {
-  position: relative;
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .product-image img {
-  width: 100%;
-  height: 240px;
+  max-height: 220px;
   object-fit: contain;
+}
+
+/* RATING */
+.rating {
+  color: #f6b500;
+  font-size: 14px;
+  margin: 6px 0;
+}
+
+/* ACTION HOVER SMOOTH */
+.product-image:hover .product-actions.left {
+  left: 12px;
+  opacity: 1;
 }
 
 /* DISCOUNT */
@@ -58,11 +74,6 @@
 .product-info h4 {
   font-size: 14px;
   margin: 10px 0 6px;
-}
-
-.rating {
-  color: #f6b500;
-  font-size: 14px;
 }
 
 .price {
@@ -150,11 +161,18 @@
 .product-actions.left {
   left: -45px;
 }
-
-.product-image:hover .product-actions.left {
-  left: 10px;
-  opacity: 1;
+.product-actions button {
+  width: 34px;
+  height: 34px;
+  border: none;
+  background: #444;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
 }
+
+
 
 /* RIGHT THUMBNAILS */
 .product-thumbs {

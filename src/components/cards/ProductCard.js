@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import QuickViewModal from "@/components/QuickViewModal/QuickViewModal";
 import { useWishlist } from "@/context/WishlistContext";
 import "@/styles/categoryGrid.css";
+// Consider adding PropTypes to validate the 'product' prop structure
 
 export default function ProductCard({ product }) {
   if (!product) return null;
@@ -14,10 +15,11 @@ export default function ProductCard({ product }) {
     name = "Product Name",
     image = "/placeholder.png",
     price = 0,
-    oldPrice = 121,
+    oldPrice = 0,
     discount = null,
   } = product;
 
+// Consider adding PropTypes to validate the 'product' prop structure
   const [quickView, setQuickView] = useState(false);
   const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
   const router = useRouter();
@@ -25,25 +27,29 @@ export default function ProductCard({ product }) {
   const isFavorited = isInWishlist(id);
 
   const toggleWishlist = (e) => {
-    e.stopPropagation();
+    e.stopPropagation(); 
     isFavorited ? removeFromWishlist(id) : addToWishlist(product);
   };
 
+// Avoid using localStorage for sensitive data; consider using a secure backend API
   /* ---------------- ADD TO CART (FIXED) ---------------- */
   const handleAddToCart = (e) => {
     e.stopPropagation();
 
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+// Consider extracting this logic into a separate utility function for better reusability
     const existingItem = cart.find((item) => item.id === id);
 
     let updatedCart;
+// Avoid using localStorage for sensitive data; consider using a secure backend API
 
     if (existingItem) {
       updatedCart = cart.map((item) =>
         item.id === id
           ? { ...item, quantity: (item.quantity || 1) + 1 }
           : item
+// Consider extracting this logic into a separate utility function for better reusability
       );
     } else {
       updatedCart = [
@@ -60,12 +66,14 @@ export default function ProductCard({ product }) {
       ];
     }
 
+// Add 'alt' text for accessibility and SEO purposes
     localStorage.setItem("cart", JSON.stringify(updatedCart));
     router.push("/cart");
   };
 
   const goToProduct = () => {
     router.push(`/product/${id}`);
+// Consider using a CSS-in-JS solution or CSS modules for better scoping and maintainability
   };
 
   return (

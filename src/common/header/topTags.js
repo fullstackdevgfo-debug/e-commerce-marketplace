@@ -1,16 +1,13 @@
 const tags = [
-  "Fashions",
-  "Electronic",
-  "Furniture",
-  "Accessories",
-  "Shoes",
-  "Smartphone",
-  "Cellphone",
-  "Cameras",
-  "Latops",
-  "Tablets",
-  "Makeup",
-  "iPhone",
+  "Fire Extinguisher",
+  "Automatic FireBall",
+  "Smart Smoke Detector",
+  "Smart LPG Gas Detector",
+  "Electric Board Device",
+  "Smart Display",
+  "Vehicle Fire Safety Device",
+  "Smart Water Sprinkler with AI Camera",
+  "Modular",
 ];
 
 export const TopTags = () => {

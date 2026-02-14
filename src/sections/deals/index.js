@@ -1,30 +1,103 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "../../styles/deals.css";
 import ProductCard from "@/components/cards/ProductCard";
 import { useRouter } from "next/navigation";
-
-/* ---------------- PRODUCTS ---------------- */
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import "swiper/css";
+// dummy data - replace with API calls in real app
 const products = [
-  { id: "p1", name: "Headphone", price: 94, image: "/Gfo-Fireball.png", category: "Electronics", rating: 4 },
-  { id: "p2", name: "Sony Phone", price: 79, image: "/Gfo-Fireball.png", category: "Electronics", rating: 5 },
-  { id: "p3", name: "Smart Watch", price: 57, image: "/Gfo-Fireball.png", category: "Electronics", rating: 3 },
-  { id: "p4", name: "Belt Combo", price: 100, image: "/banner.webp", category: "Accessories", rating: 4 },
-  { id: "p5", name: "Backpack", price: 69, image: "/Gfo-Fireball.png", category: "Accessories", rating: 4 },
-  { id: "p6", name: "Top Wear", price: 58, image: "/logo.webp", category: "Fashion", rating: 5 },
-  { id: "p7", name: "Jacket", price: 145, image: "/Gfo-Fireball.png", category: "Fashion", rating: 4 },
-  { id: "p8", name: "Top Wear 2", price: 58, image: "/logo.webp", category: "Fashion", rating: 4 },
-  { id: "p9", name: "Jacket 2", price: 145, image: "/Gfo-Fireball.png", category: "Fashion", rating: 5 },
+  {
+    id: "p1",
+    name: "Automatic FireBall",
+    price: 3100,
+    oldPrice : 3699,
+    image: "/Gfo-Fireball.png",
+    category: "Fireball",
+    rating: 4,
+  },
+  {
+    id: "p2",
+    name: "Smart Smoke Detectors",
+    price: 699,
+    oldPrice : 3699,
+    image: "https://gfofireequipments.com/wp-content/uploads/2025/11/Smart-Smoke-Detector.jpg",
+    category: "Smart",
+    rating: 5,
+  },
+  {
+    id: "p3",
+    name: "LPG Gas Detectors",
+    price: 2500,
+    oldPrice : 3699,
+    image: "https://gfofireequipments.com/wp-content/uploads/2025/12/LPG-Gas-Detector-e1764909028605.jpg",
+    category: "Smart",
+    rating: 3,
+  },
+  {
+    id: "p4",
+    name: "Electric Board Device",
+    price: 799,
+    oldPrice : 3699,
+    image: "https://gfofireequipments.com/wp-content/uploads/2025/02/EB-Device-1.jpg",
+    category: "Fireball",
+    rating: 4,
+  },
+  {
+    id: "p5",
+    name: "Smart Display",
+    price: 7999,
+    oldPrice : 3699,
+    image: "https://gfofireequipments.com/wp-content/uploads/2025/02/Smart-Display.jpg",
+    category: "Samrt",
+    rating: 4,
+  },
+  {
+    id: "p6",
+    name: "Vehicle Fire Safety Device",
+    price: 699,
+    oldPrice : 3699,
+    image: "https://gfofireequipments.com/wp-content/uploads/2025/11/Vehicle-Safety-Device.jpg",
+    category: "Fireball",
+    rating: 5,
+  },
+  {
+    id: "p7",
+    name: "Smart Water Sprinkler with AI Camera",
+    price: 78999,
+    oldPrice : 3699,
+    image: "https://gfofireequipments.com/wp-content/uploads/2025/12/ChatGPT-Image-Dec-4-2025-06_17_48-PM.png",
+    category: "Smart",
+    rating: 4,
+  },
+  {
+    id: "p8",
+    name: "Modular",
+    price: 19999,
+    oldPrice : 3699,
+    image: "https://m.media-amazon.com/images/I/51b76IlmjaL._SX679_.jpg",
+    category: "Modular",
+    rating: 4,
+  },
+  {
+    id: "p9",
+    name: "Fireball",
+    price: 2100,
+    oldPrice : 3699,
+    image: "/Gfo-Fireball.png",
+    category: "Fireball",
+    rating: 5,
+  },
 ];
 
-/* ---------------- DEALS ---------------- */
+// dummy deal products - replace with API calls in real app
 const dealProducts = [
   {
     id: "d1",
-    name: "Backpacks Stress",
-    price: 73,
-    oldPrice: 80,
+    name: "Automatic FireBall",
+    price: 3100,
+    oldPrice: 4599,
     discount: "-9%",
     img: "/Gfo-Fireball.png",
     progress: 70,
@@ -32,9 +105,9 @@ const dealProducts = [
   },
   {
     id: "d2",
-    name: "Smart Refrigerator",
-    price: 1200,
-    oldPrice: 1350,
+    name: "Smart Automatic FireBall",
+    price: 78000,
+    oldPrice: 100000,
     discount: "-11%",
     img: "/Gfo-Fireball.png",
     progress: 55,
@@ -44,7 +117,7 @@ const dealProducts = [
 
 export default function DealsOfWeek() {
   const router = useRouter();
-
+  const swiperRef = useRef(null);
   const [dealIndex, setDealIndex] = useState(0);
   const [activeTab, setActiveTab] = useState("All");
   const [slideIndex, setSlideIndex] = useState(0);
@@ -104,14 +177,30 @@ export default function DealsOfWeek() {
   return (
     <section className="deals-section">
       <div className="container deals-wrapper">
-
         {/* LEFT DEAL */}
         <div className="deals-left">
           <div className="section-head">
             <h3>DEALS OF THE WEEK</h3>
-            <div className="arrows">
-              <span onClick={() => setDealIndex(dealIndex === 0 ? dealProducts.length - 1 : dealIndex - 1)}>‹</span>
-              <span onClick={() => setDealIndex((dealIndex + 1) % dealProducts.length)}>›</span>
+            <div className="flex gap-2">
+              <button
+                className="emarket-carousel-nav"
+                onClick={() =>
+                  setDealIndex(
+                    dealIndex === 0 ? dealProducts.length - 1 : dealIndex - 1,
+                  )
+                }
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+
+              <button
+                className="emarket-carousel-nav"
+                onClick={() =>
+                  setDealIndex((dealIndex + 1) % dealProducts.length)
+                }
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
             </div>
           </div>
 
@@ -128,7 +217,7 @@ export default function DealsOfWeek() {
             <h4>{deal.name}</h4>
 
             <p className="price">
-              ${deal.price} <span>${deal.oldPrice}</span>
+              ₹{deal.price} <span>₹{deal.oldPrice}</span>
             </p>
 
             <div className="progress-bar">
@@ -164,7 +253,7 @@ export default function DealsOfWeek() {
 
             {/* DESKTOP TABS */}
             <ul className="tabs desktop-tabs">
-              {["All", "Accessories", "Electronics", "Fashion"].map((tab) => (
+              {["All", "Smart", "Modular", "Fireball"].map((tab) => (
                 <li
                   key={tab}
                   className={activeTab === tab ? "active" : ""}
@@ -193,10 +282,28 @@ export default function DealsOfWeek() {
                 <option value="Fashion">Fashion</option>
               </select>
             </div>
+            <div className="flex gap-2">
+              <button
+                className="emarket-carousel-nav"
+                onClick={() =>
+                  setSlideIndex(
+                    slideIndex === 0 ? slides.length - 1 : slideIndex - 1,
+                  )
+                }
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
 
-            <div className="arrows">
-              <span onClick={() => setSlideIndex(slideIndex === 0 ? slides.length - 1 : slideIndex - 1)}>‹</span>
-              <span onClick={() => setSlideIndex(slideIndex === slides.length - 1 ? 0 : slideIndex + 1)}>›</span>
+              <button
+                className="emarket-carousel-nav"
+                onClick={() =>
+                  setSlideIndex(
+                    slideIndex === slides.length - 1 ? 0 : slideIndex + 1,
+                  )
+                }
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
             </div>
           </div>
 
@@ -215,7 +322,6 @@ export default function DealsOfWeek() {
               ))}
             </div>
           </div>
-
         </div>
       </div>
     </section>

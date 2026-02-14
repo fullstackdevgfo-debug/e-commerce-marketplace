@@ -9,6 +9,7 @@ import {
   BrandSection,
   FeaturedProducts,
 } from "@/sections";
+import LercTestedSection from "@/sections/video";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <HomeShowcase />
       <FeaturedProducts />
       <BrandSection />
+      <LercTestedSection />
       <BlogSection />
     </main>
   );

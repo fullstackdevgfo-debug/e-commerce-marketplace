@@ -3,13 +3,14 @@ import { useState } from "react";
 import "@/styles/category.css";
 
 export default function CategorySidebar({ open, onClose }) {
+  // state to manage collapse of filter sections
   const [collapse, setCollapse] = useState({
     sub: true,
     brand: true,
     color: true,
     price: true,
   });
-
+// toggle function to expand/collapse filter sections
   const toggle = (key) =>
     setCollapse((prev) => ({ ...prev, [key]: !prev[key] }));
 

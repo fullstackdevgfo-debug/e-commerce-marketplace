@@ -1,43 +1,45 @@
 "use client";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import "../../styles/homeShowcase.css";
 
-const banners = [
-  { image: "https://i.pinimg.com/736x/ea/bd/aa/eabdaadef69a169117a2900e77bfde9f.jpg"  },
-  { image: "https://s3images.coroflot.com/user_files/individual_files/large_601412_pefdzgritogapshe0a4l4n0tb.jpg" },
-  { image: "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/89670937352801.573d3df298ad9.jpg"  },
+import { useEffect, useState } from "react";
+import "../../styles/homeShowcase.css";
+// dummy slides - replace with API calls in real app
+const slides = [
+  { image: "https://blog.greenwgroup.com/wp-content/uploads/2024/05/fire-safety-training-banner-.jpg" },
+  { image: "https://blog.greenwgroup.com/wp-content/uploads/2024/04/fire-safety-first-aid-training-blog-banner-.jpg" },
+  { image: "https://blog.greenwgroup.com/wp-content/uploads/2023/09/1450-X-500_In_house_Training_First_Aid_Fire_safety_08_Sep_2023_.jpg" },
+  { image: "https://www.greenwgroup.com/wp-content/uploads/2024/05/poster.jpg" }
 ];
 
 export default function HeroBanners() {
+  const [active, setActive] = useState(0);
+// Auto slide
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActive((prev) => (prev + 1) % slides.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <section className="hero-banners">
-      <Swiper
-        modules={[Navigation, Autoplay]}
-        navigation={true}
-        autoplay={{ delay: 3000, disableOnInteraction: false }}
-        loop={true}
-        slidesPerView={3}
-        spaceBetween={20}
-        breakpoints={{
-          0: { slidesPerView: 1 },       // mobile: only center banner
-          768: { slidesPerView: 1 },
-          1025: { slidesPerView: 3 },    // desktop: 3 banners
-        }}
-      >
-        {banners.map((banner, idx) => (
-          <SwiperSlide key={idx}>
-            <div
-              className={`hero-card ${idx === 1 ? "center" : idx === 0 ? "left" : "right"}`}
-              style={{ backgroundImage: `url(${banner.image})` }}
-            >
-             
-            </div>
-          </SwiperSlide>
+    <section className="hero">
+      {slides.map((slide, i) => (
+        <div
+          key={i}
+          className={`hero-bg ${active === i ? "active" : ""}`}
+          style={{ backgroundImage: `url(${slide.image})` }}
+        />
+      ))}
+
+      {/* Dots only */}
+      <div className="hero-dots">
+        {slides.map((_, i) => (
+          <span
+            key={i}
+            className={`dot ${active === i ? "active" : ""}`}
+            onClick={() => setActive(i)}
+          />
         ))}
-      </Swiper>
+      </div>
     </section>
   );
 }

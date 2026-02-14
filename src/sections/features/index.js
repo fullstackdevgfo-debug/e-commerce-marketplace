@@ -16,7 +16,7 @@ const policies = [
 
 export const Features = () => {
   return (
-    <div className="container mx-auto">
+    <div className="emarket-container ">
       <div className="emarket-policy">
         {policies.map((policy, index) => (
           <div key={index} className="emarket-policy-item">

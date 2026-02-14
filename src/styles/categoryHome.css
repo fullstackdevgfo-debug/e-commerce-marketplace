@@ -1,0 +1,43 @@
+/* Category Card */
+.emarket-category-card {
+  width: 100%;
+  padding: 16px 12px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid #eee;
+  transition: all 0.3s ease;
+  height: 220px;
+}
+
+.emarket-category-card:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+}
+
+/* Image Wrapper – SAME HEIGHT ALWAYS */
+.category-image-wrapper {
+  width: 100%;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Nav buttons */
+.emarket-carousel-nav {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.emarket-carousel-nav:hover {
+  background: #ff6f00;
+  color: #fff;
+  border-color: #ff6f00;
+}

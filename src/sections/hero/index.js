@@ -2,25 +2,37 @@
 
 import { useEffect, useState } from "react";
 import "../../styles/hero.css";
-
+// dummy slides - replace with API calls in real app
 const slides = [
   {
     title: "HOT RIGHT NOW",
     text: `Summer whites and bright tropical prints
 capture a breezy, island vibe.`,
-    image: "/banner.webp",
-  },
-  {
-    title: "NEW ARRIVALS",
-    text: `Discover fresh styles and
-exclusive collections.`,
-    image: "/banner.webp",
+    image: "/banner1.png",
   },
   {
     title: "BEST DEALS",
     text: `Limited time offers
 on top brands.`,
-    image: "/banner.webp",
+    image: "/banner3.png",
+  },
+  {
+    title: "HOT RIGHT NOW",
+    text: `Summer whites and bright tropical prints
+capture a breezy, island vibe.`,
+    image: "/banner4.png",
+  },
+  {
+    title: "NEW ARRIVALS",
+    text: `Discover fresh styles and
+exclusive collections.`,
+    image: "/banner5.png",
+  },
+  {
+    title: "BEST DEALS",
+    text: `Limited time offers
+on top brands.`,
+    image: "/banner6.png",
   },
 ];
 

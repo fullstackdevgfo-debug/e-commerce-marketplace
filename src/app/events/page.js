@@ -2,10 +2,7 @@
 
 import Image from "next/image";
 import "@/styles/events.css";
-
-
-
-// Latest Events Data (replace image links if needed)
+// dummy data - replace with API calls in real app
 const latestEvents = [
   {
     title: "Fire Safety Awareness Week",
